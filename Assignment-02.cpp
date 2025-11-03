@@ -4,14 +4,16 @@ using namespace std;
 
 int main() {
     float temp[50];
-    int n = 0; // Array to store temperatures & counter
+    int n = 0; // Array to store temperatures
+    // Counter for number of readings
 
     // Open the input file for reading
     ifstream read("temperatures.txt");
-    if (!read) {
+    if (!read) { // Check whether file is opened successfully or not
         cout << "Unable to open 'temperatures.txt' file\n";
         return 1;
-    } else {
+    }
+    else {
         // Read temperature values from file
         while (read >> temp[n]) {
             n++;
@@ -21,14 +23,15 @@ int main() {
             }
         }
         read.close();
-        cout << "\nTotal number of temperatures read: " << n << endl;
+        cout << "\nTotal no of temperatures read: " << n << endl;
     }
 
-    // Apply Bubble Sort
+    // Applied Bubble Sort for sorting temperatures
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (temp[j] > temp[j + 1]) {
                 float t = temp[j];
+                PRN No : 125B2F003 Name : Vijay Jathare
                 temp[j] = temp[j + 1];
                 temp[j + 1] = t;
             }
@@ -43,7 +46,7 @@ int main() {
 
     // Write Sorted Data to Output File
     ofstream write("sorted_temperatures.txt");
-    if (!write) {
+    if (!write) { // Check whether file is created successfully or not
         cout << "Unable to create 'sorted_temperatures.txt' file\n";
         return 1;
     }
